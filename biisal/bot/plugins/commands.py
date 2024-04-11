@@ -117,31 +117,14 @@ async def start(b, m):
                 return
 
             get_msg = await b.get_messages(chat_id=Var.BIN_CHANNEL, message_ids=int(usr_cmd))
-
-            file_size = None
             if get_msg.video:
-                file_size = f"{humanbytes(get_msg.video.file_size)}"
-            elif get_msg.document:
-                file_size = f"{humanbytes(get_msg.document.file_size)}"
-            elif get_msg.audio:
-                file_size = f"{humanbytes(get_msg.audio.file_size)}"
-
-            file_name = None
-            if get_msg.video:
-                file_name = f"{get_msg.video.file_name}"
-            elif get_msg.document:
-                file_name = f"{get_msg.document.file_name}"
-            elif get_msg.audio:
-                file_name = f"{get_msg.audio.file_name}"
-
-            stream_link = f"{Var.URL}watch/{str(get_msg.id)}/{quote_plus(get_name(get_msg))}?hash={get_hash(get_msg)}"
-            online_link = f"{Var.URL}{str(get_msg.id)}/{quote_plus(get_name(get_msg))}?hash={get_hash(get_msg)}"
-            tg_file = f"https://t.me/{(await b.get_me()).username}?start=Telegram_File_{str(get_msg.id)}"
-            msg_text = "**Your Link is Generated...⚡\n\n📂 File Name :-\n{}\n🗄️ File Size :- {}\n\n💌 Download Link :- {}\n\n📺 Watch Online :- {}\n\n📂 Telegram File :- {}\n\n♻️ This Link is Permanent and Won't Get Expired ♻️\n\n<b>❖ @Star_Moviess_Tamil</b>**"
-            await m.reply_text(
-                text=msg_text.format(file_name, file_size, online_link, stream_link, tg_file),
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⚡ Download Now ⚡", url=stream_link)]])
-            )
+        await m.reply_video(video=get_msg.video.file_id)
+    elif get_msg.document:
+        await m.reply_document(document=get_msg.document.file_id)
+    elif get_msg.audio:
+        await m.reply_audio(audio=get_msg.audio.file_id)
+    elif get_msg.photo:
+        await m.reply_photo(photo=get_msg.photo[-1].file_id)  # Reply with the last photo in the list
 
 @StreamBot.on_message(filters.command("help") & filters.private )
 async def help_cd(b, m):
