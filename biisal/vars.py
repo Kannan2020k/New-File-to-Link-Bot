@@ -21,7 +21,7 @@ class Var(object):
     PORT = int(getenv('PORT', '8080'))
     BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', 'new-file-store-bot-hf4q.onrender.com')) # starmovies.onrender.com
     PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
-    OWNER_ID = [int(x) for x in os.environ.get("OWNER_ID", "1391556668").split()]
+    OWNER_ID = [int(x) for x in os.environ.get("OWNER_ID", "1391556668 5162208212").split()]
     NO_PORT = bool(getenv('NO_PORT', False))
     APP_NAME = None
     OWNER_USERNAME = str(getenv('OWNER_USERNAME', 'TG_Karthik'))
