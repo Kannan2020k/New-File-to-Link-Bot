@@ -52,7 +52,6 @@ async def start(b, m):
                             InlineKeyboardButton("Join now ✔︎", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                         ]]
                     ),
-
                 )
                 return
             except Exception:
@@ -73,7 +72,6 @@ async def start(b, m):
                         InlineKeyboardButton("Help 😅", callback_data="help")
                     ],
                     [InlineKeyboardButton("Bot Updates 🚩", url=movie_laab)],
-
                     [
                         InlineKeyboardButton("Disclaimer 🔻", url=f"https://t.me/Star_Bots_Tamil"),
                         InlineKeyboardButton("Dev 😊", callback_data="aboutDev")
@@ -100,10 +98,8 @@ async def start(b, m):
                     text="<b>Please Join Our Updates Channel to Use Me❗\n\nDue To Overload, Only Channel Subscribers Can Use to Me❗.</b>",
                     reply_markup=InlineKeyboardMarkup(
                         [[
-                            InlineKeyboardButton("🤖 Join Our Bot Channel", url=f"https://t.me/{Var.UPDATES_CHANNEL}")],
-                            [InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=Star_Bots_Tamil_{usr_cmd}")
-
-                        ]]
+                            InlineKeyboardButton("🤖 Join Our Bot Channel", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                        ]],
                     ),
                     parse_mode=ParseMode.HTML
                 )
@@ -116,15 +112,18 @@ async def start(b, m):
                     disable_web_page_preview=True)
                 return
 
+        try:
             get_msg = await b.get_messages(chat_id=Var.BIN_CHANNEL, message_ids=int(usr_cmd))
             if get_msg.video:
-        await m.reply_video(video=get_msg.video.file_id)
-    elif get_msg.document:
-        await m.reply_document(document=get_msg.document.file_id)
-    elif get_msg.audio:
-        await m.reply_audio(audio=get_msg.audio.file_id)
-    elif get_msg.photo:
-        await m.reply_photo(photo=get_msg.photo[-1].file_id)  # Reply with the last photo in the list
+                await m.reply_video(video=get_msg.video.file_id)
+            elif get_msg.document:
+                await m.reply_document(document=get_msg.document.file_id)
+            elif get_msg.audio:
+                await m.reply_audio(audio=get_msg.audio.file_id)
+            elif get_msg.photo:
+                await m.reply_photo(photo=get_msg.photo[-1].file_id)  # Reply with the last photo in the list
+        except ValueError:
+            await m.reply_text("Invalid file ID. Please provide a valid file ID.")
 
 @StreamBot.on_message(filters.command("help") & filters.private )
 async def help_cd(b, m):
