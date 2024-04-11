@@ -38,7 +38,7 @@ async def start(b, m):
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="__Sorry, You Are Banned From Me☠︎︎. Contact The Developer__\n\n  **He Will Help You**",
+                        text="__Sorry, You Are Banned From Me ☠︎︎. Contact The Developer__\n\n  **He Will Help You**",
                         disable_web_page_preview=True
                     )
                     return
@@ -132,7 +132,7 @@ async def start(b, m):
 
             stream_link = f"{Var.URL}watch/{str(get_msg.id)}/{quote_plus(get_name(get_msg))}?hash={get_hash(get_msg)}"
             online_link = f"{Var.URL}{str(get_msg.id)}/{quote_plus(get_name(get_msg))}?hash={get_hash(get_msg)}"
-            tg_file = f"https://t.me/{(await b.get_me()).username}?start=Telegram_File_{str(get_msg.id)}"
+            tg_file = f"https://t.me/File_Store_Star_Bot?start=Telegram_File_{str(get_msg.id)}"
             msg_text = "**Your Link is Generated...⚡\n\n📂 File Name :-\n{}\n🗄️ File Size :- {}\n\n💌 Download Link :- {}\n\n📺 Watch Online :- {}\n\n📂 Telegram File :- {}\n\n♻️ This Link is Permanent and Won't Get Expired ♻️\n\n<b>❖ @Star_Moviess_Tamil</b>**"
             await m.reply_text(
                 text=msg_text.format(file_name, file_size, online_link, stream_link, tg_file),
