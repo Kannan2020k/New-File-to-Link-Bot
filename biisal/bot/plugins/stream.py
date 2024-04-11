@@ -30,9 +30,9 @@ msg_text ="""<b>‣ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ! 😎
 🔗 ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ: {} 
 (ʏᴏᴜ ᴄᴀɴ ᴡᴀᴛᴄʜ ᴛʜᴇ ғɪʟᴇ/ᴠɪᴅᴇᴏ ɪɴ ᴍx ᴘʟᴀʏᴇʀ ᵒʳ ᴠʟᴄ ᵒʳ ᴇᴛc... ᴜsɪɴɢ ᴛʜɪs ʟɪɴᴋ)🤩
 
-🔗 Shortened Link :- {}
-
 🔗 Telegram Link :- {}
+
+🔗 Shortened Link :- {}
 
 ‣ ＧＥＴ <a href="https://t.me/Star_Bots_Tamil">ＭＯＲＥ ＦＩＬＥＳ</a></b> 🤡"""
 
@@ -93,11 +93,12 @@ async def private_receive_handler(c: Client, m: Message):
         log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
         stream_link = f"{Var.URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-        tg_file = f"https://t.me/{(await c.get_me()).username}?start=Telegram_File_{str(log_msg.id)}"
-        shortened_link = await get_shortlink(online_link)
-        await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link} Telegram File :- {tg_file}", disable_web_page_preview=True,  quote=True)
+        tg_file = f"https://t.me/File_Store_Star_Bot?start=Telegram_File_{str(log_msg.id)}"
+        all_in_one = f"https://telegram.me/{(await c.get_me()).username}?start=Star_Bots_Tamil_{str(log_msg.id)}"
+        shortened_link = await get_shortlink(all_in_one)
+        await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}\nTelegram File :- {tg_file}\nAll in One :- {all_in_one}", disable_web_page_preview=True,  quote=True)
         await m.reply_text(
-            text=msg_text.format(get_name(log_msg), humanbytes(get_media_file_size(m)), online_link, stream_link, shortened_link, tg_file),
+            text=msg_text.format(get_name(log_msg), humanbytes(get_media_file_size(m)), online_link, stream_link, tg_file, shortened_link),
             quote=True,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📺 ᴡᴀᴛᴄʜ", url=stream_link), #Stream Link
