@@ -32,7 +32,7 @@ msg_text ="""<b>‣ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ! 😎
 
 🔗 Telegram Link :- {}
 
-🔗 Shortened Link :- {}
+🔗 All in One Link :- {}
 
 ‣ ＧＥＴ <a href="https://t.me/Star_Bots_Tamil">ＭＯＲＥ ＦＩＬＥＳ</a></b> 🤡"""
 
