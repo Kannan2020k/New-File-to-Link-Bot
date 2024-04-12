@@ -137,8 +137,16 @@ async def start(b, m):
             await m.reply_text(
                 text=msg_text.format(caption, file_size, online_link, stream_link, tg_file),
                 disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⚡ Download Now ⚡", url=stream_link)]])
-            )
+                reply_markup=InlineKeyboardMarkup([
+                   [
+                       InlineKeyboardButton("📥 Download Link", url=online_link),
+                       InlineKeyboardButton("📺 Watch Online", url=stream_link)
+                   ],
+                   [
+                       InlineKeyboardButton("📂 Telegram File", callback_data="button2_data"),
+                       InlineKeyboardButton("🔥 Powered By", url="https://t.me/Star_Moviess_Tamil")
+                   ]
+            ])
 
 @StreamBot.on_message(filters.command("help") & filters.private )
 async def help_cd(b, m):
