@@ -133,9 +133,9 @@ async def start(b, m):
             stream_link = f"{Var.URL}watch/{str(get_msg.id)}/{quote_plus(get_name(get_msg))}?hash={get_hash(get_msg)}"
             online_link = f"{Var.URL}{str(get_msg.id)}/{quote_plus(get_name(get_msg))}?hash={get_hash(get_msg)}"
             tg_file = f"https://t.me/File_Store_Star_Bot?start=Telegram_File_{str(get_msg.id)}"
-            msg_text = "**Your Link is Generated...⚡\n\n📂 File Name :-\n{}\n\n🗄️ File Size :- {}\n\n💌 Download Link :- {}\n\n📺 Watch Online :- {}\n\n📂 Telegram File :- {}\n\n♻️ This Link is Permanent and Won't Get Expired ♻️\n\n<b>❖ [Star Movies Tamil](https://t.me/Star_Moviess_Tamil)</b>**"
+            msg_text = "**Your Link is Generated...⚡\n\n📂 File Name :- {}\n\n🗄️ File Size :- {}\n\n💌 Download Link :- {}\n\n📺 Watch Online :- {}\n\n📂 Telegram File :- {}\n\n♻️ This Link is Permanent and Won't Get Expired ♻️\n\n<b>❖ [Star Movies Tamil](https://t.me/Star_Moviess_Tamil)</b>**"
             await m.reply_text(
-                text=msg_text.format(caption, file_size, online_link, stream_link, tg_file),
+                text=msg_text.format(caption, file_size, online_link, stream_link, tg_file), disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⚡ Download Now ⚡", url=stream_link)]])
             )
 
