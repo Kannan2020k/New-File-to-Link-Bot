@@ -143,10 +143,11 @@ async def start(b, m):
                        InlineKeyboardButton("📺 Watch Online", url=stream_link)
                    ],
                    [
-                       InlineKeyboardButton("📂 Telegram File", callback_data="button2_data"),
+                       InlineKeyboardButton("📂 Telegram File", url=tg_file),
                        InlineKeyboardButton("🔥 Powered By", url="https://t.me/Star_Moviess_Tamil")
                    ]
-            ])
+                ])
+            )
 
 @StreamBot.on_message(filters.command("help") & filters.private )
 async def help_cd(b, m):
