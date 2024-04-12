@@ -19,22 +19,22 @@ MY_PASS = os.environ.get("MY_PASS", None)
 pass_dict = {}
 pass_db = Database(Var.DATABASE_URL, "ag_passwords")
 
-msg_text ="""<b>‣ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ! 😎
+msg_text ="""<b>Your Link is Generated...⚡
 
-‣ Fɪʟᴇ ɴᴀᴍᴇ : <i>{}</i>
+‣ File Name :- {}
 
-‣ Fɪʟᴇ ꜱɪᴢᴇ : {}
+‣ File Size :- {}
 
-🔗 ᴅɪʀᴇᴄᴛ ᴅᴏᴡɴʟᴏᴀᴅ: {}
+📥 Download Link :- {}
 
-🔗 ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ: {} 
-(ʏᴏᴜ ᴄᴀɴ ᴡᴀᴛᴄʜ ᴛʜᴇ ғɪʟᴇ/ᴠɪᴅᴇᴏ ɪɴ ᴍx ᴘʟᴀʏᴇʀ ᵒʳ ᴠʟᴄ ᵒʳ ᴇᴛc... ᴜsɪɴɢ ᴛʜɪs ʟɪɴᴋ)🤩
+📺 Watch Online :- {} 
+(You Can Watch the File/Video in MX Player or VLC or etc... using This Link 🔗)🤩
 
-🔗 Telegram Link :- {}
+📂 Telegram File :- {}
 
 🔗 All in One Link :- {}
 
-‣ ＧＥＴ <a href="https://t.me/Star_Bots_Tamil">ＭＯＲＥ ＦＩＬＥＳ</a></b> 🤡"""
+‣ Get <a href="https://t.me/Star_Bots_Tamil">ＭＯＲＥ ＦＩＬＥＳ</a></b> 🤡"""
 
 async def get_shortlink(link):
     url = 'https://tnshort.net/api'
@@ -101,9 +101,20 @@ async def private_receive_handler(c: Client, m: Message):
             text=msg_text.format(get_name(log_msg), humanbytes(get_media_file_size(m)), online_link, stream_link, tg_file, shortened_link),
             quote=True,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📺 ᴡᴀᴛᴄʜ", url=stream_link), #Stream Link
-                                                InlineKeyboardButton('📥 ᴅᴏᴡɴʟᴏᴀᴅ', url=online_link)]]) #Download Link
-        )
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton("📥 Download Link", url=online_link),
+                    InlineKeyboardButton("📺 Watch Online", url=stream_link)
+                ],
+                [
+                    InlineKeyboardButton("📂 Telegram File", url=tg_file),
+                    InlineKeyboardButton("🔗 All in One", url=shortened_link)
+                ],
+                [
+                    InlineKeyboardButton("🔥 Powered By", url="https://t.me/Star_Moviess_Tamil")
+                ]
+            ])
+    )
     except FloodWait as e:
         print(f"Sleeping for {str(e.x)}s")
         await asyncio.sleep(e.x)
